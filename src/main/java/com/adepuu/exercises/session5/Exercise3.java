@@ -1,6 +1,7 @@
 package com.adepuu.exercises.session5;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Exercise3 {
@@ -58,13 +59,23 @@ public class Exercise3 {
         return numbersArray;
     }
 
-    static boolean checkDuplicate(int[] numbers) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int num : numbers) {
-            if (list.contains(num)) {
-                return true;
+//    static boolean checkDuplicate(int[] numbers) {
+//        ArrayList<Integer> list = new ArrayList<>();
+//        for (int num : numbers) {
+//            if (list.contains(num)) {
+//                return true;
+//            }
+//            list.add(num);
+//        }
+//        return false;
+//    }
+    static boolean checkDuplicates(int[] numbers) {
+        for(int i = 0; i < numbers.length - 1; i ++){
+            for(int j = i +1; j < numbers.length; j++){
+                if(numbers[i] == numbers[j]){
+                    return true;
+                }
             }
-            list.add(num);
         }
         return false;
     }
@@ -83,12 +94,23 @@ public class Exercise3 {
             if (choose == 1) {
                 System.out.println("Check duplicates in array");
                 System.out.println(" ");
-
-                System.out.println("Input few numbers :");
-                int[] numbersArr = readNumber();
-                System.out.println("Processing ...");
-                boolean checkDuplicateResult = checkDuplicate(numbersArr);
-                System.out.println("Result : " + checkDuplicateResult);
+                System.out.println("1. Manual input");
+                System.out.println("2. Test case input");
+                System.out.print("Your input : ");
+                int inputCases = input.nextInt();
+                if(inputCases == 1){
+                    System.out.println("Input few numbers :");
+                    int[] numbersArr = readNumber();
+                    System.out.println("Processing ...");
+                    boolean checkDuplicateResult = checkDuplicates(numbersArr);
+                    System.out.println("Result : " + checkDuplicateResult);
+                }else {
+                    int[] testNumbers = {1, 1, 1, 3, 3, 4, 3, 2, 4, 2};
+                    System.out.println("Input : " + Arrays.toString(testNumbers));
+                    System.out.println("Processing ...");
+                    boolean checkDuplicateResult = checkDuplicates(testNumbers);
+                    System.out.println("Result : " + checkDuplicateResult);
+                }
             } else {
                 System.out.println("INVALID INPUT");
             }
