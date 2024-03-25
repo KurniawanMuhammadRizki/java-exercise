@@ -52,18 +52,6 @@ public class Exercise9 {
         return numbersArray;
     }
 
-    static List<Integer> findDuplicates(int[] numbers) {
-        List<Integer> duplicates = new ArrayList<>();
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = i + 1; j < numbers.length; j++) {
-                if (numbers[i] == numbers[j] && !duplicates.contains(numbers[i])) {
-                    duplicates.add(numbers[i]);
-                }
-            }
-        }
-        return duplicates;
-
-    }
 
     static int[] getDaysToWait(int[] temperatures) {
         int[] result = new int[temperatures.length];
