@@ -51,15 +51,24 @@ public class Exercise4 {
         return numbersArray;
     }
 
+    static int[] removeDuplicates(int[] numbers) {
+        int[] result = new int[numbers.length];
+        int index = 0;
 
-    static ArrayList<Integer> removeDuplicate(int[] numbers) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int num : numbers) {
-            if (!list.contains(num)) {
-                list.add(num);
+        for (int i = 0; i < numbers.length; i++) {
+            boolean isDuplicate = false;
+            for (int j = 0; j < index; j++) {
+                if (numbers[i] == result[j]) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (!isDuplicate) {
+                result[index++] = numbers[i];
             }
         }
-        return list;
+
+        return Arrays.copyOf(result, index);
     }
 
     public static void main(String[] args) {
@@ -84,14 +93,14 @@ public class Exercise4 {
                     System.out.println("Input few numbers :");
                     int[] numbersArr = readNumber();
                     System.out.println("Processing ...");
-                    ArrayList<Integer>  removeDuplicateResult = removeDuplicate(numbersArr);
-                    System.out.println("Result : " + removeDuplicateResult);
+                    int[]  removeDuplicateResult = removeDuplicates(numbersArr);
+                    System.out.println("Result : " + Arrays.toString(removeDuplicateResult));
                 }else{
                     int[] testNumbers = {1, 2, 2, 3, 3, 3, 4, 5};
                     System.out.println("Processing ...");
                     System.out.println("Input : " + Arrays.toString(testNumbers));
-                    ArrayList<Integer>  removeDuplicateResult = removeDuplicate(testNumbers);
-                    System.out.println("Result : " + removeDuplicateResult);
+                    int[]  removeDuplicateResult = removeDuplicates(testNumbers);
+                    System.out.println("Result : " + Arrays.toString(removeDuplicateResult));
                 }
             }else {
                 System.out.println("INVALID INPUT");
